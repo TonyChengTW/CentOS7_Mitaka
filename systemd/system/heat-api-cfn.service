@@ -1,0 +1,17 @@
+[Unit]
+Description=OpenStack Heat API CFN Server
+After=syslog.target network.target
+
+[Service]
+Type=notify
+NotifyAccess=all
+TimeoutStartSec=0
+Restart=on-failure
+User=root
+ExecStart=/usr/bin/heat-api-cfn --config-file=/etc/heat/heat.conf --log-file=/var/log/heat/heat-api-cfn.log
+ExecStop=/bin/kill -15 ${MAINPID}
+KillSignal=SIGCONT
+
+[Install]
+WantedBy=multi-user.target
+

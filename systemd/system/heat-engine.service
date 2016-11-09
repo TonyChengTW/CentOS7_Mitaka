@@ -1,0 +1,17 @@
+[Unit]
+Description=OpenStack Heat Engine Server
+After=syslog.target network.target
+
+[Service]
+Type=notify
+NotifyAccess=all
+TimeoutStartSec=0
+Restart=on-failure
+User=root
+ExecStart=/usr/bin/heat-engine --config-file=/etc/heat/heat.conf --log-file=/var/log/heat/heat-engine.log
+ExecStop=/bin/kill -WINCH ${MAINPID}
+KillSignal=SIGCONT
+
+[Install]
+WantedBy=multi-user.target
+

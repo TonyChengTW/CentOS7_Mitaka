@@ -1,0 +1,13 @@
+[Unit]
+Description=OpenStack Neutron VPN as a Service Agent
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=neutron
+ExecStart=/usr/bin/neutron-vpn-agent --config-file /etc/neutron/neutron.conf --config-file /etc/neutron/l3_agent.ini --config-dir /etc/neutron/l3_agent --config-file /etc/neutron/vpn_agent.ini --config-dir /etc/neutron/conf.d/common --log-file /var/log/neutron/vpn-agent.log
+PrivateTmp=false
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

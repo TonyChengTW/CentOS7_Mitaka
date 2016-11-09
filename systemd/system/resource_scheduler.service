@@ -1,0 +1,15 @@
+[Unit]
+Description=OpenStack Nova resource scheduler Server
+After=syslog.target network.target
+
+[Service]
+Type=notify
+NotifyAccess=all
+TimeoutStartSec=0
+Restart=always
+User=root
+ExecStart=/usr/bin/resource_scheduler --config-dir=/etc/nova --log-dir=/var/log/nova
+
+[Install]
+WantedBy=multi-user.target
+

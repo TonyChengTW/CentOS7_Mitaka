@@ -1,0 +1,15 @@
+[Unit]
+Description=rabbitmq-deamon
+
+[Service]
+#Type=forking
+Environment=logdir=/var/log/rabbitmq/
+PIDFile=/var/run/rabbitmq-deamon.pid
+ExecStartPre=/usr/bin/mkdir -p ${logdir}
+ExecStart=/usr/bin/python /usr/local/bin/rabbitmq-deamon.py  >> /var/log/rabbitmq/rabbitmq-deamon.log 2>&1
+#ExecStopPost=/usr/bin/rm /var/run/rabbitmq-deamon.pid
+Restart=always
+RestartSec=0
+
+[Install]
+WantedBy=multi-user.target

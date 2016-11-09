@@ -1,0 +1,8 @@
+[Unit]
+Description=Team Daemon for device %I
+
+[Service]
+BusName=org.libteam.teamd.%i
+ExecStart=/usr/bin/teamd -U -D -o -t %i -f /run/teamd/%i.conf
+Restart=on-failure
+RestartPreventExitStatus=1
