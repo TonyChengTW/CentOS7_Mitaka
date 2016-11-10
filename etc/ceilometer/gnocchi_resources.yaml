@@ -2,7 +2,7 @@
 
 resources:
   - resource_type: identity
-    archive_policy: low
+    archive_policy: medium
     metrics:
       - 'identity.authenticate.success'
       - 'identity.authenticate.pending'
