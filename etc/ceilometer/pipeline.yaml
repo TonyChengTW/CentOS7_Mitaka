@@ -1,20 +1,20 @@
 ---
 sources:
     - name: meter_source
-      interval: 600
+      interval: 60
       meters:
           - "*"
       sinks:
           - meter_sink
     - name: cpu_source
-      interval: 600
+      interval: 60
       meters:
           - "cpu"
       sinks:
           - cpu_sink
           - cpu_delta_sink
     - name: disk_source
-      interval: 600
+      interval: 60
       meters:
           - "disk.read.bytes"
           - "disk.read.requests"
@@ -27,7 +27,7 @@ sources:
       sinks:
           - disk_sink
     - name: network_source
-      interval: 600
+      interval: 60
       meters:
           - "network.incoming.bytes"
           - "network.incoming.packets"
